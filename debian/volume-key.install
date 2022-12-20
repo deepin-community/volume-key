@@ -1,0 +1,4 @@
+usr/bin/volume_key
+usr/share/man/man8/*
+README usr/share/doc/volume_key
+contrib usr/share/doc/volume_key

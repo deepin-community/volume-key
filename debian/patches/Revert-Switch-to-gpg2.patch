@@ -1,0 +1,28 @@
+From: Michael Biebl <biebl@debian.org>
+Date: Wed, 11 Jul 2018 13:11:05 +0200
+Subject: Revert "Switch to gpg2"
+
+In Debian, the gnupg2 binary is named gpg, not gpg2
+
+This reverts commit 2c28be75e6618f2ee9c70180e60d5cf16898e391.
+---
+ configure.ac | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 4eda5eb..106128a 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -183,9 +183,10 @@ else
+ fi
+ AM_CONDITIONAL([HAVE_PYTHON3], [test x$python3_found = xyes])
+ 
+-AC_PATH_PROG([GPG], [gpg2])
++dnl Not gpg2, it cannot receive passphrases from gpgme
++AC_PATH_PROG([GPG], [gpg])
+ AC_ARG_VAR([GPG])
+-AC_DEFINE_UNQUOTED([GPG_PATH], "$GPG", [Path to the gpg2 executable])
++AC_DEFINE_UNQUOTED([GPG_PATH], "$GPG", [Path to the gpg executable])
+ 
+ # Checks for libraries.
+ PKG_CHECK_MODULES(blkid, [blkid])

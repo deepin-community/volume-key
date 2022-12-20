@@ -1,0 +1,83 @@
+Source: volume-key
+Section: utils
+Priority: optional
+Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>
+Uploaders: Martin Pitt <mpitt@debian.org>
+Build-Depends: debhelper-compat (= 12),
+               libglib2.0-dev,
+               libcryptsetup-dev,
+               libnss3-dev,
+               libgpgme11-dev,
+               libblkid-dev,
+               swig,
+               libnss3-tools,
+               dh-python,
+               python3-dev,
+Standards-Version: 4.5.0
+Rules-Requires-Root: no
+Vcs-Browser: https://salsa.debian.org/utopia-team/volume-key
+Vcs-Git: https://salsa.debian.org/utopia-team/volume-key.git
+Homepage: https://pagure.io/volume_key
+
+Package: libvolume-key1
+Section: libs
+Architecture: linux-any
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+         gnupg
+Description: Library for manipulating storage encryption keys and passphrases
+ This package provides libvolume_key, a library for manipulating storage volume
+ encryption keys and storing them separately from volumes.
+ .
+ The main goal of the software is to allow restoring access to an encrypted
+ hard drive if the primary user forgets the passphrase.  The encryption key
+ back up can also be useful for extracting data after a hardware or software
+ failure that corrupts the header of the encrypted volume, or to access the
+ company data after an employee leaves abruptly.
+
+Package: libvolume-key-dev
+Section: libdevel
+Architecture: linux-any
+Depends: libvolume-key1 (= ${binary:Version}),
+         ${misc:Depends}
+Description: Library for manipulating storage encryption keys (dev files)
+ This package provides the development header files for libvolume_key, a
+ library for manipulating storage volume encryption keys and storing them
+ separately from volumes.
+ .
+ The main goal of the software is to allow restoring access to an encrypted
+ hard drive if the primary user forgets the passphrase.  The encryption key
+ back up can also be useful for extracting data after a hardware or software
+ failure that corrupts the header of the encrypted volume, or to access the
+ company data after an employee leaves abruptly.
+
+Package: volume-key
+Architecture: linux-any
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         libvolume-key1 (= ${binary:Version})
+Description: Utility for manipulating storage encryption keys and passphrases
+ This package provides a command-line tool for manipulating storage volume
+ encryption keys and storing them separately from volumes.
+ .
+ The main goal of the software is to allow restoring access to an encrypted
+ hard drive if the primary user forgets the passphrase.  The encryption key
+ back up can also be useful for extracting data after a hardware or software
+ failure that corrupts the header of the encrypted volume, or to access the
+ company data after an employee leaves abruptly.
+
+Package: python3-volume-key
+Section: python
+Architecture: linux-any
+Depends: ${python3:Depends},
+         ${shlibs:Depends},
+         ${misc:Depends},
+Provides: ${python3:Provides}
+Description: Python 3 bindings for volume-key
+ This package provides Python3 bindings for the volume-key library.
+ .
+ The main goal of the software is to allow restoring access to an encrypted
+ hard drive if the primary user forgets the passphrase.  The encryption key
+ back up can also be useful for extracting data after a hardware or software
+ failure that corrupts the header of the encrypted volume, or to access the
+ company data after an employee leaves abruptly.

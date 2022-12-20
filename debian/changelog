@@ -1,0 +1,99 @@
+volume-key (0.3.12-3.1-deepin1) unstable; urgency=medium
+
+  * Rebuild
+
+ -- Deepin Packages Builder <packages@deepin.org>  Fri, 11 Nov 2022 18:06:10 +0800
+
+volume-key (0.3.12-3.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Call python3-config with --embed. Closes: #953316.
+
+ -- Matthias Klose <doko@debian.org>  Fri, 13 Mar 2020 08:49:02 +0100
+
+volume-key (0.3.12-3) unstable; urgency=medium
+
+  [ Jeremy Bicha ]
+  * Team upload.
+  * Don't build for non-Linux since libcryptsetup-dev is Linux-only
+
+  [ Michael Biebl ]
+  * Add explicit Build-Depends on dh-python (Closes: #950813)
+  * Bump Standards-Version to 4.5.0
+  * Bump debhelper compat level to 12
+
+ -- Michael Biebl <biebl@debian.org>  Thu, 20 Feb 2020 18:31:30 +0100
+
+volume-key (0.3.12-2) unstable; urgency=medium
+
+  * Team upload
+  * Enable Python3 bindings
+
+ -- Michael Biebl <biebl@debian.org>  Tue, 09 Oct 2018 07:33:07 +0200
+
+volume-key (0.3.12-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream version 0.3.12
+  * Rebase patches
+  * Bump Standards-Version to 4.2.1
+  * Explicitly disable building of Python2/3 bindings.
+    This allows us to drop the python-dev Build-Depends and we no longer
+    need to clean up the built files afterwards.
+  * Use find to delete libtool .la files
+
+ -- Michael Biebl <biebl@debian.org>  Tue, 09 Oct 2018 07:10:14 +0200
+
+volume-key (0.3.10-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream version 0.3.10
+  * Drop patches, all merged upstream
+  * Bump Standards-Version to 4.1.5
+  * Update configure.ac to check for gpg.
+    In Debian the gnupg2 binary is named gpg, not gpg2.
+  * Set Rules-Requires-Root to no
+
+ -- Michael Biebl <biebl@debian.org>  Wed, 11 Jul 2018 16:45:13 +0200
+
+volume-key (0.3.9-4) unstable; urgency=medium
+
+  [ Jeremy Bicha ]
+  * [42207b3] set $HOME to get the build tests a bit further
+
+  [ Iain Lane ]
+  * [a759e01] Delete files from debian/clean, dropping dh_clean override
+  * [64f7fee] Output the gpgme.log file when the tests fail
+  * [18473bb] debian/patches/volume_key-0.3.9-config.h.patch: Refresh for
+              whitespace fixes
+  * [c522374] Backport patch to set LOOPBACK pinentry mode. This is required
+              to have our passphrase callback called.
+
+ -- Iain Lane <laney@debian.org>  Mon, 16 Apr 2018 18:43:29 +0100
+
+volume-key (0.3.9-3) unstable; urgency=medium
+
+  * Drop python-volume-key. It was a relatively new, unused Python2 package.
+
+ -- Jeremy Bicha <jbicha@debian.org>  Thu, 08 Mar 2018 13:11:21 -0500
+
+volume-key (0.3.9-2) unstable; urgency=high
+
+  [ Andreas Henriksson ]
+  * Remove myself from uploaders
+  * Add upstream patch to fix build with cryptsetup 2.x (Closes: #888072)
+  * Fix lintian warning about autotools-dev
+
+  [ Jeremy Bicha ]
+  * Update Vcs fields for migration to https://salsa.debian.org/
+  * Bump debhelper compat to 11
+  * Bump Standards-Version to 4.1.3
+  * Add symbols file
+
+ -- Jeremy Bicha <jbicha@debian.org>  Mon, 19 Feb 2018 22:10:33 -0500
+
+volume-key (0.3.9-1) unstable; urgency=low
+
+  * Initial release. (Closes: #864816)
+
+ -- Martin Pitt <mpitt@debian.org>  Sun, 18 Jun 2017 21:46:37 +0200

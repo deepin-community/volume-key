@@ -1,0 +1,15 @@
+Index: b/configure.ac
+===================================================================
+--- a/configure.ac
++++ b/configure.ac
+@@ -173,8 +173,8 @@ else
+         # PYTHON3_{INCLUDES,CFLAGS,LIBS,LDFLAGS}
+         PYTHON3_INCLUDES=`${PYTHON3_CONFIG} --includes 2> /dev/null`
+         PYTHON3_CFLAGS=`${PYTHON3_CONFIG} --cflags 2> /dev/null`
+-        PYTHON3_LIBS=`${PYTHON3_CONFIG} --libs 2> /dev/null`
+-        PYTHON3_LDFLAGS=`${PYTHON3_CONFIG} --ldflags 2> /dev/null`
++        PYTHON3_LIBS=`${PYTHON3_CONFIG} --libs --embed 2> /dev/null`
++        PYTHON3_LDFLAGS=`${PYTHON3_CONFIG} --ldflags --embed 2> /dev/null`
+         AC_SUBST([PYTHON3_INCLUDES])
+         AC_SUBST([PYTHON3_CFLAGS])
+         AC_SUBST([PYTHON3_LIBS])
