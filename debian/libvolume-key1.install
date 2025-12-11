@@ -1,3 +1,2 @@
 usr/lib/*/libvolume_key.so.*
 usr/share/locale/*/LC_MESSAGES/*.mo
-AUTHORS usr/share/doc/libvolume-key

@@ -1,2 +1,3 @@
 Revert-Switch-to-gpg2.patch
-python3.8.diff
+Fix-FTBFS-with-Python-3.8.patch
+Use-AC_PATH_TOOL-to-locate-python3-config.patch
