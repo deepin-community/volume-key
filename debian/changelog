@@ -1,8 +1,83 @@
-volume-key (0.3.12-3.1-deepin1) unstable; urgency=medium
+volume-key (0.3.12-10) unstable; urgency=medium
 
-  * Rebuild
+  * Team upload
+  * Rename debian-branch to debian/latest as per DEP-14
+  * Bump Standards-Version to 4.7.2
 
- -- Deepin Packages Builder <packages@deepin.org>  Fri, 11 Nov 2022 18:06:10 +0800
+ -- Michael Biebl <biebl@debian.org>  Fri, 15 Aug 2025 20:26:32 +0200
+
+volume-key (0.3.12-9) unstable; urgency=medium
+
+  * Team upload.
+  * Drop explicit Depends on gnupg from libvolume-key1.
+    We use GnuPG via the GPGME library, so rely on libgpgme to pull in all
+    the dependencies it needs to function properly. (Closes: #1082703)
+
+ -- Michael Biebl <biebl@debian.org>  Sat, 08 Feb 2025 23:42:28 +0100
+
+volume-key (0.3.12-8) unstable; urgency=medium
+
+  * Team upload
+
+  [ Helmut Grohne ]
+  * Fix FTCBFS (Closes: #1064360)
+    - Multiarchify python3-dev build dependency
+    - Use AC_PATH_TOOL to locate python3-config
+
+  [ Michael Biebl ]
+  * Add explicit Build-Depends on python3-setuptools.
+    So far, this build dependency is pulled in automatically by dh-python,
+    but this is supposed to change in the future. (Closes: #1080901)
+  * Bump Standards-Version to 4.7.0, no further changes required
+
+ -- Michael Biebl <biebl@debian.org>  Thu, 05 Sep 2024 17:29:24 +0200
+
+volume-key (0.3.12-7) unstable; urgency=medium
+
+  * Team upload
+  * Add libglib2.0-dev Depends to libvolume-key-dev as well
+
+ -- Michael Biebl <biebl@debian.org>  Sun, 03 Mar 2024 11:31:38 +0100
+
+volume-key (0.3.12-6) unstable; urgency=medium
+
+  * Team upload
+  * Add libnss3-dev Depends to libvolume-key-dev.
+    The header files shipped in libvolume-key-dev reference cert.h from
+    libnss3-dev.
+  * Bump Standards-Version to 4.6.2
+
+ -- Michael Biebl <biebl@debian.org>  Sun, 03 Mar 2024 00:52:51 +0100
+
+volume-key (0.3.12-5) unstable; urgency=medium
+
+  * Use dh-sequence-python3 Build-Depends to enable the python3 addon
+  * Avoid test suite failure due to overlong socket path.
+    In compat 13, dh will reset HOME to a writable location managed by
+    debhelper. The resulting socket path can exceed the 108 char limit of
+    sockaddr_un.path, resulting in a test suite failure.
+    Thus call "make check" directly to avoid HOME being overridden.
+
+ -- Michael Biebl <biebl@debian.org>  Thu, 08 Sep 2022 01:54:16 +0200
+
+volume-key (0.3.12-4) unstable; urgency=medium
+
+  * Team upload
+  * Add proper meta data to the patch from the NMU
+  * Bump debhelper-compat to 13
+  * Drop no longer needed override for dh_missing.
+    In compat 13 and later, --fail-missing is the default.
+  * Use execute_before instead of override for dh_install
+  * Bump Standards-Version to 4.6.1
+  * Stop installing AUTHORS and README file twice.
+    They are already installed via debian/docs.
+  * Stop installing contrib/ directory.
+    Besides some example scripts, the directory contains a generated
+    Makefile that embeds build paths and thus breaks reproducibility.
+    (Closes: #990323)
+  * Mark libvolume-key1 and libvolume-key-dev as Multi-Arch: same
+
+ -- Michael Biebl <biebl@debian.org>  Fri, 02 Sep 2022 13:51:10 +0200
 
 volume-key (0.3.12-3.1) unstable; urgency=medium
 

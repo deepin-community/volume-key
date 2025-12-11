@@ -7,23 +7,21 @@ CHECK_HOME = $(CURDIR)/debian/tmp/home
 GPGME_LOG = $(CURDIR)/debian/tmp/gpgme.log
 
 %:
-	dh $@ --with python3
+	dh $@
 
 override_dh_auto_configure:
 	dh_auto_configure -- \
 		--without-python \
 		--with-python3
 
-override_dh_install:
+execute_before_dh_install:
 	find debian/tmp -name '*.la' -print -delete
-	dh_install
-
-override_dh_missing:
-	dh_missing --fail-missing
 
 override_dh_auto_test:
+ifeq (, $(filter nocheck, $(DEB_BUILD_OPTIONS)))
 	mkdir -p $(CHECK_HOME)
-	HOME=$(CHECK_HOME) GPGME_DEBUG=9:$(GPGME_LOG) dh_auto_test || { cat $(GPGME_LOG); exit 1; }
+	HOME=$(CHECK_HOME) GPGME_DEBUG=9:$(GPGME_LOG) make check || { cat $(GPGME_LOG); exit 1; }
+endif
 
 override_dh_makeshlibs:
 	dh_makeshlibs -- -c4

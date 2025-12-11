@@ -1,5 +1,16 @@
-Index: b/configure.ac
-===================================================================
+From: Matthias Klose <doko@debian.org>
+Date: Fri, 13 Mar 2020 08:49:02 +0100
+Subject: Fix FTBFS with Python 3.8
+
+Call python3-config with --embed
+
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=953316
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 106128a..aa64c45 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -173,8 +173,8 @@ else
