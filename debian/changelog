@@ -1,3 +1,9 @@
+volume-key (0.3.12-3.1-deepin2) unstable; urgency=medium
+
+  * Bump version to 0.3.12-3.1-deepin2 to avoid a version downgrade
+
+ -- Tianyu Chen <sweetyfish@deepin.org>  Thu, 08 Oct 2026 14:17:44 +0800
+
 volume-key (0.3.12-10) unstable; urgency=medium
 
   * Team upload
